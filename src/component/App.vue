@@ -7,6 +7,7 @@
         <app-regieter></app-regieter>
 
         <footer></footer>
+        测试, 看看根组件能否成功渲染到页面上
     </div>
 </template>
 
