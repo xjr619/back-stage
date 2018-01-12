@@ -5,7 +5,6 @@ module.exports = {
   // 入口文件配置
   entry: "./src/main.js",
 
-  // 出口文件配置项
   output: {
     // 输出的路径，通常到绝对路径
     path: path.join(__dirname, 'dist'),
