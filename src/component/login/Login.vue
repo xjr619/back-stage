@@ -104,9 +104,6 @@ export default {
   box-sizing: border-box;
   transform: translate(-50%, -50%);
 }
-.el-form-item__label{
- color: red;
-}
 .el-form-item {
   margin-bottom: 0;
 }
