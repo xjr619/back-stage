@@ -10,7 +10,7 @@
   </el-form-item>
   <el-form-item class="button_group">
     <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-    <el-button @click="resetForm('ruleForm')">重置</el-button>
+    <el-button @click="resetForm('ruleForm')" class="aaa">重置</el-button>
   </el-form-item>
 </el-form>
   </div>
@@ -57,7 +57,7 @@ export default {
     // 登录验证
     login() {
       this.$http.post(this.$api.login, this.formLabelAlign).then(res => {
-        if (res.status == 0) {
+        if (res.data.status == 0) {
           this.$alert("登录成功，跳转到首页");
           this.$router.push('/admin');
         } else {
@@ -75,6 +75,7 @@ export default {
         if (valid) {
           // 全部校验成功进行登录的密码定义
           this.login();
+          console.log(this);
         } else {
           this.$alert("校验失败");
         }
@@ -104,6 +105,7 @@ export default {
   box-sizing: border-box;
   transform: translate(-50%, -50%);
 }
+
 .el-form-item {
   margin-bottom: 0;
 }

@@ -25,5 +25,8 @@ new Vue({
   render: function (createElement) {
      return createElement(App)
   },
-  router:new VueRouter(routerConfig)
+  router:new VueRouter(routerConfig),
+  mounted () {
+    console.log(this);
+  }
 })
