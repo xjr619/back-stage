@@ -1,19 +1,22 @@
 <template>
     <div>
-        <header></header>
-
-        <!-- 根组件会有一些子组件, 我把这些子分为两种: 一种是子页面, 一种是页面布局结构 -->
-        <app-login></app-login>
-        <app-regieter></app-regieter>
-
-        <footer></footer>
-        测试, 看看根组件能否成功渲染到页面上
+        公共头部
+        <router-view></router-view>
+        公共底部
+          <el-rate
+    v-model="value"
+    :colors="['#99A9BF', '#F7BA2A', '#FF9900']">
+  </el-rate>
     </div>
 </template>
 
 <script>
     export default {
-        
+        data(){
+            return {
+                value:2
+            }
+        }
     }
 </script>
 
