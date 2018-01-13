@@ -1,3 +1,5 @@
+// 默认初始化样式
+import 'normalize.css'
 import Vue from 'vue'
 import App from './component/App.vue'
 import VueRouter from 'vue-router'

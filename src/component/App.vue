@@ -3,10 +3,15 @@
         公共头部
         <router-view></router-view>
         公共底部
-          <el-rate
-    v-model="value"
-    :colors="['#99A9BF', '#F7BA2A', '#FF9900']">
-  </el-rate>
+       <el-time-select
+  v-model="value"
+  :picker-options="{
+    start: '08:30',
+    step: '00:15',
+    end: '18:30'
+  }"
+  placeholder="选择时间">
+</el-time-select>
     </div>
 </template>
 
