@@ -1,5 +1,7 @@
 // 默认初始化样式
 import 'normalize.css'
+// 引入全局样式
+import './less/common.less'
 import Vue from 'vue'
 import App from './component/App.vue'
 import VueRouter from 'vue-router'
