@@ -11,5 +11,6 @@
 <style scoped>
 .container{
     height: 100%;
+     background-color: #267cb7;
 }
 </style>

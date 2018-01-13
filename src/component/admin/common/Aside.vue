@@ -1,6 +1,6 @@
 <template>
   <div>
-    我是头部
+    我是左侧左侧
   </div>
 </template>
 
