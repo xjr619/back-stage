@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       menu: [
-        // 数据
+        // 数据内容展示
         {
           title: "资源下载",
           children: [
