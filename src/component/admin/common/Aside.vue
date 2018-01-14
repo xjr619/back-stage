@@ -3,15 +3,17 @@
    <el-row class="tac">
   <el-col :span="12">
     <h5 class="aside_title">知识分享系统</h5>
-    <el-menu
+    <el-menu 
       default-active="2"
-      class="el-menu-vertical-demo"
+      class="el-menu-vertical-demo aside_des"
       @open="handleOpen"
       @close="handleClose">
-      <el-submenu v-for="item in menu" :index="item.title" :key="item.title" class="aside_des">
-        <template slot="title">
+      <el-submenu v-for="item in menu" :index="item.title" :key="item.title">
+        <template slot="title" >
+          <div class="aside_title">
           <i class="el-icon-message"></i>
           <span>{{item.title}}</span>
+          </div>
         </template>
           <el-menu-item :index="subitem.title" class="el-icon-document aside_sub_item" v-for="subitem in item.children" :key="subitem.title"><router-link :to="subitem.path" class="adside_sub">{{subitem.title}}</router-link>
           </el-menu-item>
@@ -27,6 +29,7 @@ export default {
   data() {
     return {
       menu: [
+        // 数据
         {
           title: "资源下载",
           children: [
@@ -44,7 +47,7 @@ export default {
           ]
         },
         {
-          title: "订单",
+          title: "订单管理",
           children: [
             { title: "内容管理", path: "/a" },
             { title: "类别管理", path: "/b" },
@@ -65,10 +68,23 @@ export default {
 };
 </script>
 
-<style lang ="less">
+<style lang ="less" scoped>
 .aside {
   height: 100%;
   background-color: #267cb7;
+  color: #fff;
+  overflow: hidden;
+}
+.aside .el-submenu__title i{
+  color: #fff;
+}
+.aside .aside_title{
+  width: 100%;
+}
+.aside .aside_title:hover{
+  background-color: #267cb7;
+}
+.aside_des li span{
   color: #fff;
 }
 .el-menu {
@@ -80,12 +96,13 @@ export default {
 .el-col-12 {
   width: 100%;
 }
+.aside .el-submenu .el-menu-item{
+  text-align: right;
+  padding:0 45px 0 0;
+}
 .adside_sub {
   color: #fff;
   text-decoration: none;
-}
-.aside_des{
-  color: #fff;
 }
 .aside .el-submenu__title,
 .aside .el-submenu__title i{
