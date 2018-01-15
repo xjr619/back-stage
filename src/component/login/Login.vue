@@ -75,7 +75,6 @@ export default {
         if (valid) {
           // 全部校验成功进行登录的密码定义
           this.login();
-          console.log(this);
         } else {
           this.$alert("校验失败");
         }

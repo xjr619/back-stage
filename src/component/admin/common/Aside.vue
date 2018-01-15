@@ -41,7 +41,7 @@ export default {
         {
           title: "购物商城",
           children: [
-            { title: "内容管理", path: "/a" },
+            { title: "内容管理", path: "/" },
             { title: "类别管理", path: "/b" },
             { title: "评论管理", path: "/c" }
           ]
