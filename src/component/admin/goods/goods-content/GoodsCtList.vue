@@ -41,9 +41,12 @@
     <!-- 包裹多个数据的时候只能用template -->
     <el-table-column prop="name" label="属性" width="120">
        <template slot-scope="scope">
-         <i class="el-icon-picture"></i>
-         <i class="el-icon-upload "></i>
-         <i class="el-icon-star-on"></i>
+         <i :class="['el-icon-picture',scope.row.is_slide==1?'active':'']"
+         @click="mififyStatus(scope.row.id,'is_slide',scope.row.is_slide==1?false:true)"></i>
+         <i :class="['el-icon-upload',scope.row.is_top==1?'active':'']"
+          @click="mififyStatus(scope.row.id,'is_top',scope.row.is_slide==1?false:true)"></i>
+         <i :class="['el-icon-star-on',scope.row.is_hot==1?'active':'']"
+         @click="mififyStatus(scope.row.id,'is_hot',scope.row.is_hot==1?false:true)"></i>
        </template>
     </el-table-column>
     <el-table-column prop="name" label="操作" width="120">
@@ -52,6 +55,18 @@
       </template>
     </el-table-column>
   </el-table>
+  <!-- 分页部分 -->
+   <!-- @size-change="handleSizeChange" -->
+    <!-- @current-change="handleCurrentChange" -->
+      <el-pagination
+      @size-change="sizeChange"
+      @current-change="currentChange"
+      :current-page="goodsQuery.pageIndex"
+      :page-sizes="page.pageSizes"
+      :page-size="goodsQuery.pageSize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="page.total">
+    </el-pagination>
   </div>
 </template>
 
@@ -76,10 +91,15 @@ export default {
           sell_price: 800
         }
       ],
+      // 查询相关参数
       goodsQuery: {
         pageIndex: 1,
         pageSize: 10,
         searchvalue: ""
+      },
+      page:{
+        pageSizes:[10,20,30,40],
+        total:100
       }
     };
   },
@@ -89,12 +109,27 @@ export default {
       this.$http
         .get(this.$api.gsList, { params: this.goodsQuery })
         .then(res => {
-          console.log(res);
           this.tableData = res.data.message;
+          // 根据返回的总页数和页面总数赋值关联起来
+          this.page.total = res.data.totalcount;
           //  totalcount: 27,
           // pageIndex: 1,
           // pageSize: 1
         });
+    },
+    // 根据状态获取元素模拟的因为没借口用
+    mififyStatus(id,type,newStatus){
+        this.tableData.filter(goods => goods.id == id)[0][type] = newStatus? 1: 0;
+    },
+    // 改变当前页
+    currentChange(pageIndex){
+      this.goodsQuery.pageIndex = pageIndex;
+      // 改变后重新渲染
+      this.getGoodsList();
+    },
+    // 改变当前显示的条数
+    sizeChange(pageSize){
+      this.goodsQuery.pageSize=pageSize;
     }
   },
   created() {
@@ -108,6 +143,12 @@ export default {
 .gooList {
   .topBtn {
     margin-left: 0;
+  }
+}
+[class^=el-icon]{
+  color:rgba(0, 0, 0, 0.3);
+  &.active{
+    color: #000;
   }
 }
 </style>
