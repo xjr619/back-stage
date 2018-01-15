@@ -148,6 +148,7 @@ export default {
   }
 }
 [class^=el-icon]{
+  font-size: 18px;
   color:rgba(0, 0, 0, 0.3);
   &.active{
     color: #000;

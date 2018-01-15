@@ -3,7 +3,6 @@
 import axios from 'axios'
 import api from '../js/api-config.js'
 export default function(to,from,next){
-  console.log(to)
   // 得到要访问页面的名称
   var toPageName = to.name;
   // 请求接口看是否登录过
