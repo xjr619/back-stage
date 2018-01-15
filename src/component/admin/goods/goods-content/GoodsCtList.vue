@@ -43,7 +43,7 @@
        <template slot-scope="scope">
          <i :class="['el-icon-picture',scope.row.is_slide==1?'active':'']"
          @click="mififyStatus(scope.row.id,'is_slide',scope.row.is_slide==1?false:true)"></i>
-         <i :class="['el-icon-upload',scope.row.is_top==1?'active':'']"
+         <i :class="['el-icon-upload2',scope.row.is_top==1?'active':'']"
           @click="mififyStatus(scope.row.id,'is_top',scope.row.is_slide==1?false:true)"></i>
          <i :class="['el-icon-star-on',scope.row.is_hot==1?'active':'']"
          @click="mififyStatus(scope.row.id,'is_hot',scope.row.is_hot==1?false:true)"></i>
@@ -117,7 +117,7 @@ export default {
           // pageSize: 1
         });
     },
-    // 根据状态获取元素模拟的因为没借口用
+    // 根据状态获取元素模拟的因为没接口用
     mififyStatus(id,type,newStatus){
         this.tableData.filter(goods => goods.id == id)[0][type] = newStatus? 1: 0;
     },
@@ -130,6 +130,8 @@ export default {
     // 改变当前显示的条数
     sizeChange(pageSize){
       this.goodsQuery.pageSize=pageSize;
+      // 改变显示页数时也重新渲染
+       this.getGoodsList();
     }
   },
   created() {

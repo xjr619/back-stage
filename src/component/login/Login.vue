@@ -58,8 +58,12 @@ export default {
     login() {
       this.$http.post(this.$api.login, this.formLabelAlign).then(res => {
         if (res.data.status == 0) {
-          this.$alert("登录成功，跳转到首页");
-          this.$router.push('/admin');
+          // this.$alert("登录成功，跳转到首页");
+          this.$router.push({name:'admin'});
+          //判断是否刚才登录的某一页跳过来的是的话登录的时候直接跳到那一页提高用户体验
+          let nextPage = this.$route.query.nextPage;
+          // 如果存在则直接跳到刚才想要登录的页面否则直接跳到管理页面
+          this.$router.push({path:nextPage?nextPage:'/admin'});
         } else {
           this.$alert(res.data.message);
         }
