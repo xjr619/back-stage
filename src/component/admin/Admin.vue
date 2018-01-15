@@ -10,7 +10,7 @@
       <Header></Header>
     </el-header>
     <!-- 管理系统内容主体 -->
-    <el-main>我是主体</el-main>
+    <el-main><router-view></router-view></el-main>
   </el-container>
 </el-container>
 </template>
@@ -24,8 +24,11 @@ import Aside from './common/Aside.vue'
     }
   }
 </script>
-<style>
-  .el-header{
+<style scoped lang="less">
+  
+  .admin{
+    height: 100%;
+    .el-header{
     background-color: #B3C0D1;
     color: #333;
   }
@@ -39,7 +42,5 @@ import Aside from './common/Aside.vue'
     background-color: #E9EEF3;
     color: #333;
   }
-  .admin{
-    height: 100%;
   }
 </style>

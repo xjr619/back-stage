@@ -19,7 +19,7 @@ Vue.prototype.$http = axios;
 import api from './js/api-config.js'
 Vue.prototype.$api = api;
 // 把这个域名挂载axios上这样每次就会默认在前面加上这个域名
-axios.defaults.baseURL ='http://157.122.54.189:9095';
+axios.defaults.baseURL ='localhost';
 new Vue({
   el:'#app',
   render: function (createElement) {

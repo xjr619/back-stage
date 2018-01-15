@@ -84,7 +84,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style scoped lang="less">
 .login {
   padding: 10px;
   width: 450px;
