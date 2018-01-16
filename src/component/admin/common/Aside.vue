@@ -49,7 +49,7 @@ export default {
         {
           title: "订单管理",
           children: [
-            { title: "内容管理", path: "/a" },
+            { title: "订单列表", path: "/a" },
             { title: "类别管理", path: "/b" },
             { title: "评论管理", path: "/c" }
           ]

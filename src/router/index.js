@@ -15,6 +15,7 @@ let childs=[
   {name:"goodsCgList",path:"goods/category/list",component:GoodsCgList},
   {name:"goodsCgEdit",path:"goods/category/edit/:id",component:GoodsCgEdit},
   {name:"goodsCgAdd",path:"goods/category/add",component:GoodsCgList},
+  // 订单管理
 ];
 export default{
    routes:[

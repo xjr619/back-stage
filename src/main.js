@@ -20,7 +20,7 @@ import api from './js/api-config.js'
 Vue.prototype.$api = api;
 // http://157.122.54.189:9095
 // 把这个域名挂载axios上这样每次就会默认在前面加上这个域名
-axios.defaults.baseURL ='http://157.122.54.189:9095';
+axios.defaults.baseURL ='http://localhost:8899';
 // 我们是跨域请求的接口, 默认不会携带cookie等信息, 后端需要这些信息来判断登陆状态, 所以要设为true
 axios.defaults.withCredentials=true;
 // 导入编写路由守卫的文件

@@ -3,10 +3,10 @@
     <h3>后台管理</h3>
    <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" class="login_form" :rules="rule" ref="ruleForm">
   <el-form-item label="用户名" prop="uname" class="login_name">
-    <el-input v-model="formLabelAlign.uname"></el-input>
+    <el-input v-model="formLabelAlign.uname" @keyup.enter.native="submitForm('ruleForm')"></el-input>
   </el-form-item>
   <el-form-item label="密码" prop="upwd" class="login_pwd">
-    <el-input v-model="formLabelAlign.upwd"></el-input>
+    <el-input v-model="formLabelAlign.upwd" @keyup.enter.native="submitForm('ruleForm')"></el-input>
   </el-form-item>
   <el-form-item class="button_group">
     <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
@@ -75,6 +75,7 @@ export default {
     },
     // 提交表单时的验证
     submitForm(formName) {
+      console.log(1);
       this.$refs[formName].validate(valid => {
         if (valid) {
           // 全部校验成功进行登录的密码定义
