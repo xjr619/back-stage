@@ -98,7 +98,12 @@ export default {
       id: null,
       // 定义保存分类列表
       goodsCategory: [],
-      ruleForm: {},
+      ruleForm: {
+        status:false,
+        is_slide:false,
+        is_top:false,
+        is_hot:false
+      },
       rules: {
         title: [{ required: true, message: "请输入商品标题", trigger: "blur" }],
         sub_title: [{ required: true, message: "请输入副标题", trigger: "blur" }],
