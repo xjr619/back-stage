@@ -25,6 +25,7 @@
         <!--提示信息部分  -->
         <el-tooltip class="item" effect="dark"  placement="right">
             <div slot="content">
+              <span>{{scope.row.imgurl}}</span>
               <img :src="scope.row.imgurl" alt="商品预览" style="width:200px">
             </div>
               <router-link :to="{name:'goodsCtEdit',params:{ id:scope.row.id}}">{{scope.row.title}}</router-link>
@@ -112,6 +113,9 @@ export default {
       this.$http
         .get(this.$api.gsList, { params: this.goodsQuery })
         .then(res => {
+          res.data.message.forEach((item,index)=>{
+            item.imgurl = item.imgurl.replace("imgs","/imgs");
+          })
           this.tableData = res.data.message;
           // 根据返回的总页数和页面总数赋值关联起来
           this.page.total = res.data.totalcount;
@@ -140,6 +144,9 @@ export default {
     // 把选中的选项保存起来
     selectionChange(selection){
       this.selections = selection;
+    },
+    add(){
+      this.$router.push({name:""});
     },
     // 删除商品
     del(){
