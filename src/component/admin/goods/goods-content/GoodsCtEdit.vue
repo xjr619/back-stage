@@ -5,7 +5,7 @@
 			<el-breadcrumb-item>返回上一层</el-breadcrumb-item>
 			<el-breadcrumb-item>购物商城</el-breadcrumb-item>
 			<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-			<el-breadcrumb-item>编辑商品</el-breadcrumb-item>
+			<el-breadcrumb-item v-text="this.id==null?'添加商品':'编辑商品'"></el-breadcrumb-item>
 		</el-breadcrumb>
 		<!-- 显示的商品详情 -->
 		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -132,16 +132,39 @@ export default {
           }
         });
 		})
-	},
+  },
+  // 添加函数
+  addGoods(){
+      this.$http.post('/admin/goods/add/goods',this.ruleForm)
+      .then(res=>{
+       this.$alert('跳回商品列表', '增加改成功', {
+          confirmButtonText: '确定',
+          callback: action => {
+           this.$router.push({name:"goodsCtList"});
+          }
+        });
+      })
+  },
     submitForm(formName) {
       // 表单校验
       this.$refs[formName].validate(valid => {
         if (valid) {
-		  //  校验通过执行修改函数
-			this.modify();
+            if (this.id !=null) {
+              		  //  修改页面的校验通过执行修改函数
+			            this.modify();
+            }else{
+                // 添加页面的校验通过就执行这里
+                console.log(111)
+                this.addGoods();
+            }
         } else {
-          //  不通过则提示校验失败
+          if(this.id !=null){
+            //  不通过修改的则提示校验失败
           this.$alert("修改失败");
+          }else{
+            // 不通过添加的执行这里
+             this.$alert("添加失败");
+          }
           return false;
         }
       });
@@ -163,6 +186,15 @@ export default {
       this.$http.get(this.$api.ctList + "goods").then(res => {
         if (res.data.status == 0) {
           this.goodsCategory = res.data.message;
+          if (this.id==null) {
+            // id等于空就默认渲染添加类的id否则添加修改的那个id
+                      this.goodsCategory.forEach((value,index)=>{
+               if(value.class_layer==1){
+                 this.ruleForm.category_id = value.category_id;
+               }
+          })
+          }
+
           // 转换id的类型注意v-model里面的关联数据类型是string要转化成数字
           this.ruleForm.category_id = +this.ruleForm.category_id;
         }
@@ -184,6 +216,9 @@ export default {
     },
     // 上传文件函数
     fileUploaded(res, file, fileList) {
+     if(this.ruleForm.fileList==undefined){
+       this.ruleForm.fileList = [res];
+     }
       // 上传文件时把返回的文件推进文件列表
       this.ruleForm.fileList.push(res);
     }
@@ -191,7 +226,10 @@ export default {
   created() {
     // 实例创建的时候获取商品id然后执行数据显示的方法
     this.id = this.$route.params.id;
-    this.getGoods();
+    // id存在的时候在渲染
+    if (this.id !==null) {
+          this.getGoods();
+    }
     this.getCategory();
   }
 };

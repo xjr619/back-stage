@@ -8,7 +8,9 @@
 </el-breadcrumb>
 <!-- 按钮组 -->
 <div style="margin: 20px 0">
-  <el-button plain size="mini" icon="el-icon-plus" class="topBtn">新增</el-button>
+  <el-button plain size="mini" icon="el-icon-plus" class="topBtn">
+    <router-link :to="{name:'goodsCtAdd'}">新增</router-link>
+  </el-button>
 <el-button plain size="mini" icon="el-icon-check" class="topBtn" @click="selectAll">全选</el-button>
 <el-button plain size="mini" icon="el-icon-delete" class="topBtn" @click="delGoods">删除</el-button>
   <el-input placeholder="请输入搜索内容" style="width:180px;float:right;" v-model="goodsQuery.searchvalue" @blur="getGoodsList">

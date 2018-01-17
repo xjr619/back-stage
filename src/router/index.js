@@ -3,6 +3,7 @@ import Login from '../component/login/Login.vue'
 import Admin from '../component/admin/Admin.vue'
 import GoodsCtList from '../component/admin/goods/goods-content/GoodsCtList.vue'
 import GoodsCtEdit from '../component/admin/goods/goods-content/GoodsCtEdit.vue'
+import GoodsCtAdd from '../component/admin/goods/goods-content/GoodsCtAdd.vue'
 import GoodsCgList from '../component/admin/goods/goods-category/GoodsCgList.vue'
 import GoodsCgEdit from '../component/admin/goods/goods-category/GoodsCgEdit.vue'
 // 配置分类管理的子路由
@@ -10,7 +11,7 @@ let childs=[
   // 内容管理
   {name:"goodsCtList",path:"goods/content/list",component:GoodsCtList},
   {name:"goodsCtEdit",path:"goods/content/edit/:id",component:GoodsCtEdit},
-  {name:"goodsCtAdd",path:"goods/content/add",component:GoodsCtList},
+  {name:"goodsCtAdd",path:"goods/content/add",component:GoodsCtEdit},
   // 分类管理
   {name:"goodsCgList",path:"goods/category/list",component:GoodsCgList},
   {name:"goodsCgEdit",path:"goods/category/edit/:id",component:GoodsCgEdit},
